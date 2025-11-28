@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel=""stylesheet" href="css/css-grid.css?version=0.1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klein De Guzman | Personal Profile</title>
@@ -17,6 +16,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
+            /* A cool dark gradient background */
             background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
             min-height: 100vh;
             display: flex;
@@ -26,13 +26,14 @@
             padding: 20px;
         }
 
+        /* --- MAIN CARD CONTAINER --- */
         .profile-card {
-            background: rgba(255, 255, 255, 0.05); 
-            backdrop-filter: blur(10px); 
+            background: rgba(255, 255, 255, 0.05); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* The "Glass" blur effect */
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 40px;
-            max-width: 700px;
+            max-width: 800px;
             width: 100%;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             display: flex;
@@ -41,6 +42,7 @@
             align-items: center;
         }
 
+        /* --- LEFT SIDE: IMAGE --- */
         .image-container {
             flex: 1;
             display: flex;
@@ -51,8 +53,8 @@
             width: 250px;
             height: 250px;
             object-fit: cover;
-            border-radius: 50%; 
-            border: 4px solid #e94560; 
+            border-radius: 0%; /* Makes the image a circle */
+            border: 4px solid #e94560; /* Accent color border */
             box-shadow: 0 0 20px rgba(233, 69, 96, 0.4);
             transition: transform 0.3s ease;
         }
@@ -61,12 +63,13 @@
             transform: scale(1.05);
         }
 
+        /* --- RIGHT SIDE: INFO --- */
         .info-container {
             flex: 2;
         }
 
         .nickname {
-            color: #e94560; 
+            color: #e94560; /* Accent color */
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -75,7 +78,7 @@
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 5px;
             line-height: 1.2;
         }
@@ -86,6 +89,7 @@
             margin-bottom: 20px;
         }
 
+        /* --- SECTIONS --- */
         .section-title {
             font-size: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -95,6 +99,7 @@
             color: #a5a5a5;
         }
 
+        /* HOBBY TAGS (The "Pills" look) */
         .hobby-list {
             display: flex;
             flex-wrap: wrap;
@@ -102,7 +107,7 @@
         }
 
         .tag {
-            background: rgba(162, 163, 99, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -110,7 +115,7 @@
         }
 
         .tag:hover {
-            background: #3c3b8d;
+            background: #e94560;
             cursor: pointer;
         }
 
@@ -138,16 +143,8 @@
         }
     </style>
 </head>
-<body>
-
-    <h1>Create a Flex Container</h1>
-
-<div class="container">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>  
-</div>
-
+<body> 
+    
     <div class="profile-card">
         <div class="image-container">
             <img src="klein.jpg" 
@@ -171,7 +168,6 @@
                 <div class="tag">Eat</div>
                 <div class="tag">Pray</div>
                 <div class="tag">Repeat</div>
-            </div>
             </div>
 
             <div class="section-title">Personal Goal</div>
