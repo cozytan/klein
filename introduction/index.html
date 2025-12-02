@@ -7,10 +7,9 @@
      <link href="css/flexbox.css" rel="stylesheet">
 
     <style>
-        /* BASE STYLES */
         * {
-            margin: 0;
-            padding: 0;
+            margin: 2;
+            padding: 1;
             box-sizing: border-box;
         }
 
@@ -25,29 +24,28 @@
             padding: 20px;
         }
 
-        /* PROFILE CARD STYLES */
         .profile-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 40px;
-            max-width: 900px; /* Increased max-width to accommodate the gallery better */
+            max-width: 900px; 
             width: 100%;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: row;
             gap: 40px;
-            /* Added align-items: flex-start to keep content at the top in wider views */
+          
             align-items: flex-start; 
         }
 
-        /* IMAGE AND INFO CONTAINERS */
+       
         .image-container {
             flex: 1;
             display: flex;
             justify-content: center;
-            flex-direction: column; /* Allows vertical stacking of image and gallery */
+            flex-direction: column; 
         }
 
         .profile-pic {
@@ -58,7 +56,7 @@
             border: 4px solid #e94560;
             box-shadow: 0 0 20px rgba(233, 69, 96, 0.4);
             transition: transform 0.3s ease;
-            margin-bottom: 20px; /* Space before the gallery */
+            margin-bottom: 20px; 
         }
 
         .profile-pic:hover {
@@ -69,7 +67,6 @@
             flex: 2;
         }
 
-        /* TEXT STYLES */
         .nickname {
             color: #e94560;
             font-weight: 600;
@@ -91,7 +88,6 @@
             margin-bottom: 20px;
         }
 
-        /* SECTION TITLES & CONTENT */
         .section-title {
             font-size: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
@@ -101,7 +97,6 @@
             color: #a5a5a5;
         }
 
-        /* HOBBY TAGS */
         .hobby-list {
             display: flex;
             flex-wrap: wrap;
@@ -132,16 +127,15 @@
 
         .gallery-container {
             display: flex;
-            flex-wrap: wrap; /* Allows images to wrap to the next line */
-            gap: 8px; /* Space between images */
+            flex-wrap: wrap; 
+            gap: 8px; 
             margin-top: 20px;
         }
 
         .gallery-item {
-            /* 1/2 width on small screens, 1/3 on medium, 1/5 on large */
-            flex: 1 1 calc(20% - 8px); /* Base: 5 items per row (20%) minus gap */
-            max-width: calc(20% - 8px);
-            border-radius: 8px;
+            flex: 1 1 calc(35% - 12px); 
+            max-width: calc(35% - 12px);
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease;
@@ -157,24 +151,19 @@
             height: 100%;
             display: block;
             object-fit: cover;
-            /* Ensures images keep their aspect ratio and fill the item box */
+            
         }
 
-        /* ------------------------------------ */
-        /* --- RESPONSIVE DESIGN (Media Queries) --- */
-        /* ------------------------------------ */
 
-        /* Tablet/Medium Screen adjustments (768px to 992px) */
-        @media (max-width: 992px) {
+        @media (max-width: 999px) {
              .gallery-item {
-                /* 3 items per row on medium screens */
                 flex: 1 1 calc(33.333% - 8px); 
                 max-width: calc(33.333% - 8px);
             }
         }
 
-        /* Phone/Small Screen adjustments (up to 768px) */
-        @media (max-width: 768px) {
+
+        @media (max-width: 792px) {
             .profile-card {
                 flex-direction: column;
                 text-align: center;
@@ -182,7 +171,6 @@
             }
 
             .image-container {
-                /* Center the profile picture */
                 align-items: center; 
             }
 
@@ -191,20 +179,17 @@
             }
 
             .gallery-container {
-                margin-top: 10px;
+                margin-top: 12px;
             }
 
             .gallery-item {
-                /* 2 items per row on small screens */
-                flex: 1 1 calc(50% - 8px); 
-                max-width: calc(50% - 8px);
+                flex: 1 1 calc(65% - 12px); 
+                max-width: calc(65% - 12px);
             }
         }
 
-        /* Very Small Phones */
         @media (max-width: 480px) {
             .gallery-item {
-                /* 1 item per row on very small screens */
                 flex: 1 1 100%; 
                 max-width: 100%;
             }
