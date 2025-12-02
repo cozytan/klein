@@ -63,38 +63,27 @@ body {
   text-decoration: none;
 }
 
-/* --- MODIFIED: .content CONTAINER NOW USES FLEXBOX --- */
 .content {
   grid-area: main;
-  /* Activate Flexbox for the content area */
   display: flex; 
-  /* Allow the items to wrap to the next row */
   flex-wrap: wrap; 
-  /* Distribute items with space between them */
   justify-content: space-between; 
-  /* Add padding around the boxes inside */
   padding: 10px; 
 }
 
-/* --- NEW: .flex-item STYLES FOR THE INDIVIDUAL BOXES --- */
 .flex-item {
-  /* Set the size: take up slightly less than a third (33.33%) of the container */
   flex: 0 0 32%; 
-  /* Add vertical spacing between rows */
   margin-bottom: 15px; 
-  /* Visual Styling to match your image */
-  border: 3px solid #b3e0ff; /* Light blue border */
+  border: 3px solid #b3e0ff; 
   border-radius: 5px;
   padding: 20px;
   background-color: #ffffff; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   box-sizing: border-box; 
   text-align: center;
-  /* Ensure a consistent height for visual uniformity */
   min-height: 250px; 
 }
 
-/* Optional: Style headings inside the boxes */
 .flex-item h1 {
   font-size: 1.2em;
   color: #4a4a4a;
@@ -103,8 +92,11 @@ body {
   margin-top: 0;
 }
 
-/* Removed the conflicting .content > h1 and .content > p styles */
-
+.flex-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%; 
+}
 
 .facts {
   grid-area: facts;
@@ -153,6 +145,7 @@ body {
   .content {grid-area: 2 / span 4;}
   .facts {grid-area: 2 / span 1;}
   .footer {grid-area: 3 / span 6;}
+
 
   .flex-item {
     flex: 0 0 32%; 
