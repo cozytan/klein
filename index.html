@@ -41,17 +41,18 @@
         /* --- HOME PAGE --- */
         #home {
             text-align: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
         }
 
         .intro-text {
             font-size: 2.2rem;
             max-width: 800px;
             margin-bottom: 2rem;
+            line-height: 1.5;
         }
 
         .btn {
-            padding: 15px 35px;
+            padding: 15px 40px;
             font-size: 1.1rem;
             font-weight: bold;
             color: #0f172a;
@@ -60,60 +61,73 @@
             border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
         }
 
         .btn:hover {
             transform: scale(1.05);
             background-color: #7dd3fc;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
         }
 
         /* --- GALLERY PAGE (Grid) --- */
         .gallery-title {
             margin-bottom: 30px;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #38bdf8;
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
         }
 
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr); /* 6 columns for easy math */
+            grid-template-columns: repeat(6, 1fr); 
             gap: 20px;
-            max-width: 900px;
+            max-width: 1000px;
             width: 100%;
         }
 
         .img-card {
             background-color: #1e293b;
-            border-radius: 12px;
-            height: 200px;
+            border-radius: 15px;
+            height: 250px;
             overflow: hidden;
             border: 2px solid #334155;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: 0.4s ease;
+        }
+
+        .img-card:hover {
+            transform: translateY(-10px);
+            border-color: #38bdf8;
         }
 
         .img-card img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* This ensures images fill the box without stretching */
+            display: block;
         }
 
-        /* Top Row: 3 images (each spans 2 columns = 6) */
+        /* Top Row: 3 images (2 columns each) */
         .top-row { grid-column: span 2; } 
         
-        /* Bottom Row: 2 images (each spans 3 columns = 6) */
+        /* Bottom Row: 2 images (3 columns each) */
         .bottom-row { grid-column: span 3; }
 
         .statement {
-            margin-top: 30px;
-            font-size: 1.1rem;
+            margin-top: 40px;
+            font-size: 1.2rem;
             font-style: italic;
             color: #94a3b8;
+            text-align: center;
+            max-width: 700px;
         }
 
         .back-btn {
-            margin-top: 20px;
+            margin-top: 30px;
             background-color: transparent;
             color: #38bdf8;
-            border: 1px solid #38bdf8;
+            border: 2px solid #38bdf8;
         }
     </style>
 </head>
@@ -127,26 +141,39 @@
     </section>
 
     <section id="gallery" class="page">
-        <h2 class="gallery-title">My Projects & Life</h2>
+        <h2 class="gallery-title">My Anonymous Profile</h2>
         
         <div class="image-grid">
-            <div class="img-card top-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7yCq8nId9vB8-Y_1G3E49lW0XGg09fP6p8A&s" alt="Spongebob"></div>
-            <div class="img-card top-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfI37qHqFw_X6X8Z-R_I9vY-T_I8X-Y_I9vA&s" alt="Blue Ranger"></div>
-            <div class="img-card top-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_I9vY-T_I8X-Y_I9vA&s" alt="Patrick"></div>
+            <div class="img-card top-row">
+                <img src="https://images.unsplash.com/photo-1594463750939-ebb28c3f7f75?auto=format&fit=crop&w=500&q=80" alt="Spongebob Vibes">
+            </div>
+            <div class="img-card top-row">
+                <img src="https://images.unsplash.com/photo-1560160912-32999e236391?auto=format&fit=crop&w=500&q=80" alt="Blue Ranger Vibes">
+            </div>
+            <div class="img-card top-row">
+                <img src="https://images.unsplash.com/photo-1559131397-f94da358f7ca?auto=format&fit=crop&w=500&q=80" alt="Patrick Vibes">
+            </div>
             
-            <div class="img-card bottom-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQO_m05vK8_X-v-R_I9vY-T_I8X-Y_I9vA&s" alt="Pikachu"></div>
-            <div class="img-card bottom-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_I8X-Y_I9vA-R_I9vY-T_I8X-Y_I9vA&s" alt="Sukuna"></div>
+            <div class="img-card bottom-row">
+                <img src="https://images.unsplash.com/photo-1613771404721-1f92d799e49f?auto=format&fit=crop&w=500&q=80" alt="Pikachu Vibes">
+            </div>
+            <div class="img-card bottom-row">
+                <img src="https://images.unsplash.com/photo-1578632292335-df3abbb0d586?auto=format&fit=crop&w=500&q=80" alt="Sukuna/Anime Vibes">
+            </div>
         </div>
 
-        <p class="statement">"Driven by logic, inspired by creativity, and building the future through code."</p>
+        <p class="statement">"Still young... Don't want to count it."</p>
         
         <button class="btn back-btn" onclick="navigateTo('home')">Go Back Home</button>
     </section>
 
     <script>
         function navigateTo(pageId) {
+            // Hide all pages
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            // Show the clicked page
             document.getElementById(pageId).classList.add('active');
+            // Scroll to top automatically
             window.scrollTo(0, 0);
         }
     </script>
