@@ -17,10 +17,8 @@
             background-color: #0f172a;
             color: white;
             overflow-x: hidden;
-            transition: background 0.5s ease;
         }
 
-        /* Container for smooth transitions */
         .page {
             display: none;
             min-height: 100vh;
@@ -40,17 +38,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- HOME PAGE (Flexbox) --- */
+        /* --- HOME PAGE --- */
         #home {
             text-align: center;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
         .intro-text {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             max-width: 800px;
             margin-bottom: 2rem;
-            line-height: 1.4;
         }
 
         .btn {
@@ -62,52 +59,35 @@
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+            transition: 0.3s;
         }
 
         .btn:hover {
             transform: scale(1.05);
             background-color: #7dd3fc;
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
         }
 
         /* --- GALLERY PAGE (Grid) --- */
-        #gallery {
-            justify-content: flex-start;
-            padding-top: 50px;
-        }
-
         .gallery-title {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             font-size: 2rem;
             color: #38bdf8;
         }
 
-        /* Grid Layout for Images */
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr); /* 6 columns to allow 2-column and 3-column centering */
+            grid-template-columns: repeat(6, 1fr); /* 6 columns for easy math */
             gap: 20px;
-            max-width: 1000px;
+            max-width: 900px;
             width: 100%;
         }
 
         .img-card {
             background-color: #1e293b;
             border-radius: 12px;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 200px;
             overflow: hidden;
             border: 2px solid #334155;
-            transition: transform 0.3s ease;
-        }
-
-        .img-card:hover {
-            transform: translateY(-5px);
-            border-color: #38bdf8;
         }
 
         .img-card img {
@@ -116,34 +96,32 @@
             object-fit: cover;
         }
 
-        /* Layout Logic: Top row (3 images) */
+        /* Top Row: 3 images (each spans 2 columns = 6) */
         .top-row { grid-column: span 2; } 
         
-        /* Layout Logic: Bottom row (2 images) centered */
+        /* Bottom Row: 2 images (each spans 3 columns = 6) */
         .bottom-row { grid-column: span 3; }
 
         .statement {
-            margin-top: 40px;
-            font-size: 1.2rem;
+            margin-top: 30px;
+            font-size: 1.1rem;
             font-style: italic;
             color: #94a3b8;
-            text-align: center;
         }
 
         .back-btn {
-            margin-top: 30px;
+            margin-top: 20px;
             background-color: transparent;
             color: #38bdf8;
             border: 1px solid #38bdf8;
         }
-
     </style>
 </head>
 <body>
 
     <section id="home" class="page active">
         <h1 class="intro-text">
-            I am, <strong>Klein Vincent De Guzman</strong>, a Computer Science Student at Asia Pacific College.
+            I am, <strong>Klein Vincent De Guzman</strong> a Computer Science Student at Asia Pacific College.
         </h1>
         <button class="btn" onclick="navigateTo('gallery')">View My Gallery</button>
     </section>
@@ -152,12 +130,12 @@
         <h2 class="gallery-title">My Projects & Life</h2>
         
         <div class="image-grid">
-             <div class="img-card top-row"><img src="apc4.jpg" alt=""></div>
-            <div class="img-card top-row"><img src="apc3.jpg" alt=""></div>
-            <div class="img-card top-row"><img src="klein1.jpg" alt=""></div>
+            <div class="img-card top-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7yCq8nId9vB8-Y_1G3E49lW0XGg09fP6p8A&s" alt="Spongebob"></div>
+            <div class="img-card top-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfI37qHqFw_X6X8Z-R_I9vY-T_I8X-Y_I9vA&s" alt="Blue Ranger"></div>
+            <div class="img-card top-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_I9vY-T_I8X-Y_I9vA&s" alt="Patrick"></div>
             
-            <div class="img-card bottom-row"><img src="apc5.jpg" alt=""></div>
-            <div class="img-card bottom-row"><img src="apc1.jpg" alt=""></div>
+            <div class="img-card bottom-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQO_m05vK8_X-v-R_I9vY-T_I8X-Y_I9vA&s" alt="Pikachu"></div>
+            <div class="img-card bottom-row"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_I8X-Y_I9vA-R_I9vY-T_I8X-Y_I9vA&s" alt="Sukuna"></div>
         </div>
 
         <p class="statement">"Driven by logic, inspired by creativity, and building the future through code."</p>
@@ -166,19 +144,10 @@
     </section>
 
     <script>
-        /* --- JAVASCRIPT FOR NAVIGATION --- */
         function navigateTo(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-
-            // Show the target page
-            const target = document.getElementById(pageId);
-            target.classList.add('active');
-
-            // Optional: Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
