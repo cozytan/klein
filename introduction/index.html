@@ -3,179 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klein De Guzman | Personal Profile</title>
-    
-    <link href="css/flexbox.css" rel="stylesheet">
-
+    <title>Klein Vincent | Portfolio</title>
     <style>
+        
+        :root {
+            --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            --accent-color: #4a90e2;
+            --text-main: #2d3436;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            /* A cool dark gradient background */
-            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            background: var(--bg-gradient);
+            color: var(--text-main);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            padding: 20px;
+            display: grid;
+            place-items: center;
+            overflow-x: hidden;
         }
 
-        /* --- MAIN CARD CONTAINER --- */
-        .profile-card {
-            background: rgba(255, 255, 255, 0.05); /* Semi-transparent white */
-            backdrop-filter: blur(10px); /* The "Glass" blur effect */
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .container {
+            width: 90%;
+            max-width: 900px;
+            min-height: 500px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 20px;
+            box-shadow: var(--shadow);
             padding: 40px;
-            max-width: 800px;
-            width: 100%;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .page {
             display: flex;
-            flex-direction: row;
-            gap: 40px;
+            flex-direction: column;
             align-items: center;
-        }
-
-        /* --- LEFT SIDE: IMAGE --- */
-        .image-container {
-            flex: 1;
-            display: flex;
             justify-content: center;
+            text-align: center;
+            transition: all 0.5s ease;
         }
 
-        .profile-pic {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 0%; /* Makes the image a circle */
-            border: 4px solid #e94560; /* Accent color border */
-            box-shadow: 0 0 20px rgba(233, 69, 96, 0.4);
-            transition: transform 0.3s ease;
+        .hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        .profile-pic:hover {
+        #home-page h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        #home-page span {
+            color: var(--accent-color);
+            display: block;
+            font-weight: 300;
+        }
+
+        .btn {
+            background: var(--text-main);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
             transform: scale(1.05);
         }
 
-        /* --- RIGHT SIDE: INFO --- */
-        .info-container {
-            flex: 2;
-        }
-
-        .nickname {
-            color: #e94560; /* Accent color */
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 5px;
-            line-height: 1.2;
-        }
-
-        .details {
-            color: #ccc;
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
-        /* --- SECTIONS --- */
-        .section-title {
-            font-size: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            margin-top: 20px;
-            color: #a5a5a5;
-        }
-
-        /* HOBBY TAGS (The "Pills" look) */
-        .hobby-list {
+        .gallery-wrapper {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            flex-direction: column;
+            gap: 50px;
+            width: 100%;
+            align-items: center;
         }
 
-        .tag {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            transition: background 0.3s;
+        .image-card {
+            width: 100%;
+            max-width: 450px;
         }
 
-        .tag:hover {
-            background: #e94560;
-            cursor: pointer;
+        .image-card img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
 
-        .goal-text {
-            font-style: italic;
-            background: rgba(233, 69, 96, 0.2);
-            padding: 10px;
-            border-left: 3px solid #e94560;
-            border-radius: 0 5px 5px 0;
+        .image-card img:hover {
+            transform: scale(1.02);
         }
 
-        @media (max-width: 768px) {
-            .profile-card {
-                flex-direction: column;
-                text-align: center;
-            }
+        .image-card p {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #555;
+            letter-spacing: 0.5px;
+        }
 
-            .hobby-list {
-                justify-content: center;
-            }
+        .back-btn {
+            margin-top: 40px;
+            background: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--text-main);
+        }
 
-            .goal-text {
-                text-align: left;
-            }
+        .back-btn:hover {
+            background: #eee;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 25px; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
-<body> 
-    
-    <div class="profile-card">
-        <div class="image-container">
-            <img src="klein.jpg" 
-                 alt="Klein De Guzman" 
-                 class="profile-pic">
-        </div>
+<body>
 
-        <div class="info-container">
-            <div class="nickname">The "Shyboy"</div>
-            <h1>Klein De Guzman</h1>
-            <div class="details">
-                BSCS-SF • 2nd Year Student
-            </div>
+    <main class="container">
+        
+        <section id="home-page" class="page">
+            <h1>
+                I am, Klein Vincent De Guzman 
+                <span>a Computer Science Student at Asia Pacific College</span>
+            </h1>
+            <button class="btn" onclick="showGallery()">Explore My Work</button>
+        </section>
 
-            <div class="section-title">Everyday Hobbies</div>
-            <div class="hobby-list">
-                <div class="tag">Sleep</div>
-                <div class="tag">Study</div>
-                <div class="tag">Money</div>
-                <div class="tag">Workout</div>
-                <div class="tag">Eat</div>
-                <div class="tag">Pray</div>
-                <div class="tag">Repeat</div>
-            </div>
+        <section id="gallery-page" class="page hidden">
+            <div class="gallery-wrapper">
+                
+                <div class="image-card">
+                    <img src="klein1.jpg" alt="Klein Vincent Image 1">
+                    <p>Building the future through clean code and logic.</p>
+                </div>
 
-            <div class="section-title">Personal Goal</div>
-            <div class="goal-text">
-                "Cheap Luxury Life, hehe"
+                <div class="image-card">
+                    <img src="klein2.jpg" alt="Klein Vincent Image 2">
+                    <p>Always curious, always learning at APC.</p>
+                </div>
+
             </div>
-        </div>
-    </div>
+            <button class="btn back-btn" onclick="showHome()">← Back Home</button>
+        </section>
+
+    </main>
+
+    <script>
+        const homePage = document.getElementById('home-page');
+        const galleryPage = document.getElementById('gallery-page');
+
+        function showGallery() {
+            homePage.style.opacity = '0';
+            setTimeout(() => {
+                homePage.classList.add('hidden');
+                galleryPage.classList.remove('hidden');
+                setTimeout(() => {
+                    galleryPage.style.opacity = '1';
+                    galleryPage.style.transform = 'translateY(0)';
+                }, 50);
+            }, 400);
+        }
+
+        function showHome() {
+            galleryPage.style.opacity = '0';
+            setTimeout(() => {
+                galleryPage.classList.add('hidden');
+                homePage.classList.remove('hidden');
+                setTimeout(() => {
+                    homePage.style.opacity = '1';
+                }, 50);
+            }, 400);
+        }
+    </script>
 
 </body>
 </html>
