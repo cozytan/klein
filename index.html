@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klein Vincent | Portfolio</title>
     <style>
-
         :root {
             --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             --accent-color: #4a90e2;
@@ -28,12 +27,15 @@
             display: grid;
             place-items: center;
             overflow-x: hidden;
+            padding: 20px 0; /* Added padding for mobile breathing room */
         }
 
         .container {
             width: 90%;
             max-width: 900px;
-            min-height: 500px;
+            /* Changed to max-height with scroll for better UX with many images */
+            max-height: 90vh;
+            overflow-y: auto; 
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.18);
@@ -43,11 +45,19 @@
             position: relative;
         }
 
+        /* Custom Scrollbar for the Glass Container */
+        .container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .container::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 10px;
+        }
+
         .page {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-align: center;
             transition: all 0.5s ease;
         }
@@ -68,6 +78,28 @@
             color: var(--accent-color);
             display: block;
             font-weight: 300;
+            margin-top: 10px;
+        }
+
+        /* Main Page Image List Styling */
+        .main-image-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            width: 100%;
+            max-width: 500px;
+            margin: 30px 0;
+        }
+
+        .main-image-stack img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .main-image-stack img:hover {
+            transform: scale(1.03);
         }
 
         .btn {
@@ -80,7 +112,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.3s ease, background 0.3s ease;
-            margin-top: 30px;
+            margin-bottom: 20px;
         }
 
         .btn:hover {
@@ -105,11 +137,6 @@
             width: 100%;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .image-card img:hover {
-            transform: scale(1.02);
         }
 
         .image-card p {
@@ -124,10 +151,6 @@
             background: transparent;
             color: var(--text-main);
             border: 2px solid var(--text-main);
-        }
-
-        .back-btn:hover {
-            background: #eee;
         }
 
         @media (max-width: 600px) {
@@ -145,22 +168,29 @@
                 I am, Klein Vincent De Guzman 
                 <span>a Computer Science with a specialization in Cybersecurity & Forensics, Student at Asia Pacific College</span>
             </h1>
+
+            <div class="main-image-stack">
+                <img src="apc1.jpg" alt="">
+                <img src="apc2.jpg" alt="">
+                <img src="apc3.jpg" alt="">
+                <img src="apc4.jpg" alt="">
+                <img src="apc5.jpg" alt="">
+            </div>
+
             <button class="btn" onclick="showGallery()">See More About Me</button>
         </section>
 
         <section id="gallery-page" class="page hidden">
             <div class="gallery-wrapper">
-                
                 <div class="image-card">
                     <img src="klein1.jpg" alt="Klein Vincent De Guzman">
-                    <p>HI! Welcome to my personal website. Stil young...</p>
+                    <p>HI! Welcome to my personal website. Still young...</p>
                 </div>
 
                 <div class="image-card">
                     <img src="klein2.jpg" alt="Klein Vincent De Guzman">
                     <p>Always curious, always learning at APC 😊</p>
                 </div>
-
             </div>
             <button class="btn back-btn" onclick="showHome()">← Back Home</button>
         </section>
@@ -170,12 +200,14 @@
     <script>
         const homePage = document.getElementById('home-page');
         const galleryPage = document.getElementById('gallery-page');
+        const container = document.querySelector('.container');
 
         function showGallery() {
             homePage.style.opacity = '0';
             setTimeout(() => {
                 homePage.classList.add('hidden');
                 galleryPage.classList.remove('hidden');
+                container.scrollTop = 0; // Reset scroll to top
                 setTimeout(() => {
                     galleryPage.style.opacity = '1';
                     galleryPage.style.transform = 'translateY(0)';
@@ -188,6 +220,7 @@
             setTimeout(() => {
                 galleryPage.classList.add('hidden');
                 homePage.classList.remove('hidden');
+                container.scrollTop = 0; // Reset scroll to top
                 setTimeout(() => {
                     homePage.style.opacity = '1';
                 }, 50);
