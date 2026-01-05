@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klein Vincent | Portfolio</title>
     <style>
-        /* --- CSS VARIABLES & RESET --- */
+
         :root {
             --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             --accent-color: #4a90e2;
@@ -25,13 +25,11 @@
             background: var(--bg-gradient);
             color: var(--text-main);
             min-height: 100vh;
-            /* GRID: Used to center the entire website container */
             display: grid;
             place-items: center;
             overflow-x: hidden;
         }
 
-        /* --- LAYOUT CONTAINER --- */
         .container {
             width: 90%;
             max-width: 900px;
@@ -45,7 +43,6 @@
             position: relative;
         }
 
-        /* --- PAGE CONTENT (FLEXBOX) --- */
         .page {
             display: flex;
             flex-direction: column;
@@ -61,7 +58,6 @@
             transform: translateY(20px);
         }
 
-        /* --- HOME PAGE STYLES --- */
         #home-page h1 {
             font-size: clamp(1.5rem, 5vw, 2.5rem);
             margin-bottom: 20px;
@@ -74,7 +70,6 @@
             font-weight: 300;
         }
 
-        /* --- BUTTON STYLES --- */
         .btn {
             background: var(--text-main);
             color: white;
@@ -93,9 +88,7 @@
             transform: scale(1.05);
         }
 
-        /* --- GALLERY PAGE (VERTICAL LAYOUT) --- */
         .gallery-wrapper {
-            /* FLEXBOX: Ensures vertical alignment for images */
             display: flex;
             flex-direction: column;
             gap: 50px;
@@ -137,7 +130,6 @@
             background: #eee;
         }
 
-        /* --- RESPONSIVENESS --- */
         @media (max-width: 600px) {
             .container { padding: 25px; }
             .btn { width: 100%; }
@@ -151,9 +143,9 @@
         <section id="home-page" class="page">
             <h1>
                 I am, Klein Vincent De Guzman 
-                <span>a Computer Science Student at Asia Pacific College</span>
+                <span>a Computer Science with a specialization in Cybersecurity & Forensics, Student at Asia Pacific College</span>
             </h1>
-            <button class="btn" onclick="showGallery()">Explore My Work</button>
+            <button class="btn" onclick="showGallery()">See More About Me</button>
         </section>
 
         <section id="gallery-page" class="page hidden">
@@ -161,12 +153,12 @@
                 
                 <div class="image-card">
                     <img src="klein1.jpg" alt="Klein Vincent De Guzman">
-                    <p>Building the future through clean code and logic.</p>
+                    <p>HI! Welcome to my personal website. Stil young...</p>
                 </div>
 
                 <div class="image-card">
                     <img src="klein2.jpg" alt="Klein Vincent De Guzman">
-                    <p>Always curious, always learning at APC.</p>
+                    <p>Always curious, always learning at APC 😊</p>
                 </div>
 
             </div>
@@ -180,12 +172,10 @@
         const galleryPage = document.getElementById('gallery-page');
 
         function showGallery() {
-            // Fade out home
             homePage.style.opacity = '0';
             setTimeout(() => {
                 homePage.classList.add('hidden');
                 galleryPage.classList.remove('hidden');
-                // Small delay to trigger the fade-in animation
                 setTimeout(() => {
                     galleryPage.style.opacity = '1';
                     galleryPage.style.transform = 'translateY(0)';
@@ -194,7 +184,6 @@
         }
 
         function showHome() {
-            // Fade out gallery
             galleryPage.style.opacity = '0';
             setTimeout(() => {
                 galleryPage.classList.add('hidden');
