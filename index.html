@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klein Vincent | Portfolio</title>
     <style>
+        /* CSS VARIABLES: Colors and Glassmorphism */
         :root {
             --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             --accent-color: #4a90e2;
@@ -17,92 +18,142 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
             background: var(--bg-gradient);
             color: var(--text-main);
             min-height: 100vh;
+            /* GRID: Used to center the entire container */
             display: grid;
             place-items: center;
+            overflow-x: hidden;
             padding: 20px;
         }
 
         .container {
             width: 95%;
-            max-width: 900px;
+            max-width: 1000px;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: 20px;
             box-shadow: var(--shadow);
             padding: 40px;
             text-align: center;
         }
 
+        /* FLEXBOX: Organizes page content vertically */
         .page {
             display: flex;
             flex-direction: column;
             align-items: center;
+            transition: all 0.5s ease;
         }
 
-        .hidden { display: none; }
+        .hidden {
+            display: none;
+            opacity: 0;
+        }
 
-        h1 { font-size: 2rem; margin-bottom: 10px; }
-        .sub-text { color: var(--accent-color); font-size: 1.1rem; margin-bottom: 30px; }
+        #home-page h1 {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 10px;
+        }
 
-        /* --- THE HORIZONTAL ID ROW --- */
+        #home-page span {
+            color: var(--accent-color);
+            display: block;
+            font-weight: 300;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* FLEXBOX: Horizontal ID-style image row */
         .main-image-row {
             display: flex;
-            flex-direction: row; /* FORCES HORIZONTAL */
+            flex-direction: row;
             justify-content: center;
-            align-items: center;
-            flex-wrap: nowrap; /* Prevents stacking unless on very small screens */
-            gap: 10px;
+            flex-wrap: wrap; /* Ensures images wrap on smaller screens */
+            gap: 15px;
             margin-bottom: 30px;
-            width: 100%;
-            overflow-x: auto; /* Adds scroll if they don't fit */
         }
 
         .main-image-row img {
-            /* STARK 2x2 ID SIZE */
-            width: 100px; 
-            height: 100px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 2px solid white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            flex-shrink: 0; /* Prevents images from squishing */
+            width: 150px;  /* Fixed 2x2 ID size */
+            height: 150px; 
+            object-fit: cover; /* Prevents image distortion */
+            border-radius: 8px;
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .main-image-row img:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-color);
         }
 
         .btn {
             background: var(--text-main);
             color: white;
-            padding: 12px 30px;
+            padding: 15px 35px;
             border: none;
             border-radius: 50px;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
+            transition: transform 0.3s ease, background 0.3s ease;
         }
 
-        .btn:hover { background: var(--accent-color); }
+        .btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.05);
+        }
 
-        /* Page 2 Styling */
+        /* GALLERY PAGE STYLING */
         .gallery-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 40px;
+            width: 100%;
+            align-items: center;
         }
-        .image-card img { width: 100%; max-width: 400px; border-radius: 10px; }
+
+        .image-card {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .image-card img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .image-card p {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 25px; }
+            .main-image-row img {
+                width: 100px; /* Smaller size for mobile phones */
+                height: 100px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <main class="container">
+        
         <section id="home-page" class="page">
             <h1>I am, Klein Vincent De Guzman</h1>
-            <p class="sub-text">a Computer Science with a specialization in Cybersecurity & Forensics, Student at Asia Pacific College</p>
+            <span>a Computer Science with a specialization in Cybersecurity & Forensics, Student at Asia Pacific College</span>
 
             <div class="main-image-row">
                 <img src="klein1.jpg" alt="ID 1">
@@ -118,23 +169,36 @@
         <section id="gallery-page" class="page hidden">
             <div class="gallery-wrapper">
                 <div class="image-card">
-                    <img src="klein1.jpg" alt="Full 1">
-                    <p>Building the future through clean code.</p>
+                    <img src="klein1.jpg" alt="Klein Image 1">
+                    <p>Building the future through clean code and logic.</p>
+                </div>
+                <div class="image-card">
+                    <img src="klein2.jpg" alt="Klein Image 2">
+                    <p>Always curious, always learning at APC 😊</p>
                 </div>
             </div>
-            <button class="btn" onclick="showHome()" style="margin-top:20px; background:#666;">← Back Home</button>
+            <button class="btn" onclick="showHome()" style="margin-top:40px; background:#666;">← Back Home</button>
         </section>
+
     </main>
 
     <script>
+        // JAVASCRIPT: Navigation logic to switch "pages" without reloading
+        const homePage = document.getElementById('home-page');
+        const galleryPage = document.getElementById('gallery-page');
+
         function showGallery() {
-            document.getElementById('home-page').classList.add('hidden');
-            document.getElementById('gallery-page').classList.remove('hidden');
+            homePage.classList.add('hidden');
+            galleryPage.classList.remove('hidden');
+            window.scrollTo(0,0);
         }
+
         function showHome() {
-            document.getElementById('gallery-page').classList.add('hidden');
-            document.getElementById('home-page').classList.remove('hidden');
+            galleryPage.classList.add('hidden');
+            homePage.classList.remove('hidden');
+            window.scrollTo(0,0);
         }
     </script>
+
 </body>
 </html>
