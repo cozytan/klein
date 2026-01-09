@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klein Vincent | Portfolio</title>
     <style>
-        
         :root {
             --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             --accent-color: #4a90e2;
@@ -41,6 +40,17 @@
             box-shadow: var(--shadow);
             padding: 40px;
             position: relative;
+        }
+
+        /* --- NEW PROFILE IMAGE CSS --- */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .page {
@@ -141,11 +151,13 @@
     <main class="container">
         
         <section id="home-page" class="page">
+            <img src="your-photo.jpg" alt="Klein Vincent De Guzman" class="profile-img">
+            
             <h1>
                 I am, Klein Vincent De Guzman 
                 <span>a Computer Science Student at Asia Pacific College</span>
             </h1>
-            <button class="btn" onclick="showGallery()">Explore My Work</button>
+            <button class="btn" onclick="showGallery()">Next</button>
         </section>
 
         <section id="gallery-page" class="page hidden">
@@ -153,12 +165,12 @@
                 
                 <div class="image-card">
                     <img src="klein1.jpg" alt="Klein Vincent Image 1">
-                    <p>Building the future through clean code and logic.</p>
+                    <p>Still young.. Don,t want to count it. 🤐</p>
                 </div>
 
                 <div class="image-card">
                     <img src="klein2.jpg" alt="Klein Vincent Image 2">
-                    <p>Always curious, always learning at APC.</p>
+                    <p>Always curious, always learning at APC. 🫡</p>
                 </div>
 
             </div>
